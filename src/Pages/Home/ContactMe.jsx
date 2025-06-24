@@ -51,7 +51,7 @@ export default function ContactMe() {
               />
             </label>
           </div>
-          <label htmlFor="choode-topic" className="contact--label">
+          <label htmlFor="choose-topic" className="contact--label">
             <span className="text-md">Choose a topic</span>
             <select id="choose-topic" className="contact--input text-md">
               <option>Select One...</option>
