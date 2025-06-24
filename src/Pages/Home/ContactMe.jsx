@@ -17,6 +17,7 @@ export default function ContactMe() {
                 className="contact--input text-md"
                 name="first-name"
                 id="first-name"
+                placeholder="First Name"
                 required
               />
             </label>
@@ -27,6 +28,7 @@ export default function ContactMe() {
                 className="contact--input text-md"
                 name="last-name"
                 id="last-name"
+                placeholder="Last Name"
                 required
               />
             </label>
@@ -37,21 +39,23 @@ export default function ContactMe() {
                 className="contact--input text-md"
                 name="email"
                 id="email"
+                placeholder="Email Address"
                 required
               />
             </label>
             <label htmlFor="phone-number" className="contact--label">
-              <span className="text-md">phone-number</span>
+              <span className="text-md">Phone Number</span>
               <input
-                type="number"
+                type="tel"
                 className="contact--input text-md"
                 name="phone-number"
                 id="phone-number"
+                placeholder="Phone Number"
                 required
               />
             </label>
           </div>
-          <label htmlFor="choode-topic" className="contact--label">
+          <label htmlFor="choose-topic" className="contact--label">
             <span className="text-md">Choose a topic</span>
             <select id="choose-topic" className="contact--input text-md">
               <option>Select One...</option>
@@ -69,7 +73,7 @@ export default function ContactMe() {
               placeholder="Type your message..."
             />
           </label>
-          <label htmlFor="checkboc" className="checkbox--label">
+          <label htmlFor="checkbox" className="checkbox--label">
             <input type="checkbox" required name="checkbox" id="checkbox" />
             <span className="text-sm">I accept the terms</span>
           </label>
