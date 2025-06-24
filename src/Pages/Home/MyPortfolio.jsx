@@ -55,7 +55,7 @@ export default function MyPortfolio() {
                   rel="noopener noreferrer"
                   className="portfolio-project-link"
                 >
-                  {item.link}
+                  {item.linkText || "View Project"}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

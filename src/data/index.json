@@ -31,7 +31,8 @@
       "src": "./img/placeholder-image3.png",
       "title": "Creative UI/UX Design",
       "description": "A modern and user-friendly UI/UX design concept focused on seamless user experience, intuitive navigation, and visually appealing interfaces.",
-      "link": "View In Github"
+      "link": "https://github.com/yasiru56/project1",
+      "linkText": "View on GitHub"
     },
     
     {
@@ -39,7 +40,8 @@
       "src": "./img/placeholder-image4.jpg",
       "title": "Healthy Food Delivery Management System",
       "description": "A full-stack web application developed using the MERN stack for managing healthy food deliveries. This system includes order tracking, user management, and a seamless user experience.",
-      "link": "View In Github"
+      "link": "https://github.com/yasiru56/sliit-portfolio-projects",
+      "linkText": "View on GitHub"
     }
     
     
