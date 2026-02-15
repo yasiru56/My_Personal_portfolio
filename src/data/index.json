@@ -3,48 +3,71 @@
     {
       "id": "1",
       "src": "./img/product-chain-1.png",
-      "title": "Front-End",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique"
+      "title": "Frontend Development",
+      "description": "Building responsive, high-performance user interfaces using React.js, Next.js, and Tailwind CSS. Focused on smooth animations and accessibility."
     },
     {
       "id": "2",
       "src": "./img/tag-1.png",
-      "title": "Back-End",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique"
+      "title": "Backend Engineering",
+      "description": "Designing scalable APIs and microservices with Node.js, Express, and PostgreSQL. implementing secure authentication and real-time features."
     },
     {
       "id": "3",
       "src": "./img/feather-pen-2.png",
       "title": "UI & UX Design",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique"
+      "description": "Creating intuitive, user-centric designs with Figma. blending aesthetics with functionality to deliver premium digital experiences."
     },
     {
       "id": "4",
       "src": "./img/feather-pen-1.png",
-      "title": "Webflow Development",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique"
+      "title": "Cloud & DevOps",
+      "description": "Deploying and managing applications on AWS and Vercel. setting up CI/CD pipelines and ensuring high availability and security."
     }
   ],
   "portfolio": [
     {
       "id": "1",
       "src": "./img/placeholder-image3.png",
-      "title": "Creative UI/UX Design",
-      "description": "A modern and user-friendly UI/UX design concept focused on seamless user experience, intuitive navigation, and visually appealing interfaces.",
-      "link": "https://github.com/yasiru56/project1",
-      "linkText": "View on GitHub"
+      "title": "E-Commerce Dashboard",
+      "description": "A comprehensive analytics dashboard for online retailers. Features real-time data visualization, inventory management, and sales reporting.",
+      "techStack": [
+        "React",
+        "TypeScript",
+        "Chart.js",
+        "Firebase"
+      ],
+      "githubLink": "https://github.com/yasiru56",
+      "liveLink": "https://github.com/yasiru56"
     },
-    
     {
       "id": "2",
       "src": "./img/placeholder-image4.jpg",
-      "title": "Healthy Food Delivery Management System",
-      "description": "A full-stack web application developed using the MERN stack for managing healthy food deliveries. This system includes order tracking, user management, and a seamless user experience.",
-      "link": "https://github.com/yasiru56/sliit-portfolio-projects",
-      "linkText": "View on GitHub"
+      "title": "Food Delivery App",
+      "description": "A full-stack food delivery platform with geolocation tracking, payment gateway integration, and a vendor management portal.",
+      "techStack": [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Redux"
+      ],
+      "githubLink": "https://github.com/yasiru56/sliit-portfolio-projects",
+      "liveLink": "https://github.com/yasiru56"
+    },
+    {
+      "id": "3",
+      "src": "./img/placeholder-image3.png",
+      "title": "AI Content Generator",
+      "description": "An AI-powered application that generates marketing copy and blog posts. integrated with OpenAI GPT-4 API and custom fine-tuned models.",
+      "techStack": [
+        "Next.js",
+        "OpenAI API",
+        "Tailwind",
+        "Prisma"
+      ],
+      "githubLink": "https://github.com/yasiru56",
+      "liveLink": "https://github.com/yasiru56"
     }
-    
-    
   ],
   "testimonial": [
     {

@@ -7,6 +7,11 @@ import Home from "./Pages/Home/Homescreen";
 function App() {
   return (
     <div className="App">
+      <div className="background-effects">
+        <div className="bg-orb orb-1"></div>
+        <div className="bg-orb orb-2"></div>
+        <div className="bg-orb orb-3"></div>
+      </div>
       <Router>
         <div>
           <Navbar />

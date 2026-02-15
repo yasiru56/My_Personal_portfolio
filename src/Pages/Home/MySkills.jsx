@@ -11,9 +11,11 @@ export default function MySkills() {
 
       <div className="skills--section--container">
         {data?.skills?.map((item, index) => (
-          <div key={index} className="skills--section--card">
-            <div className="skills--section--img">
-              <img src={item.src} alt={item.title} onError={(e) => e.target.src = "/img/default.png"} />
+          <div key={index} className="skills--section--card fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
+            <div className="skills--card--header">
+              <div className="skills--section--img">
+                <img src={item.src} alt={item.title} onError={(e) => e.target.src = "/img/default.png"} />
+              </div>
             </div>
             <div className="skills--section--card--content">
               <h3 className="skills--section--title">{item.title}</h3>

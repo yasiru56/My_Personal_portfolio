@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 
 function Navbar() {
   const [navActive, setNavActive] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleNav = () => {
     setNavActive(!navActive);
@@ -14,9 +15,24 @@ function Navbar() {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 500) {
-        closeMenu(); // Fixed function call
+      if (window.innerWidth <= 1200) {
+        closeMenu();
       }
     };
 
@@ -27,43 +43,44 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className={`navbar ${navActive ? "active" : ""}`}>
+    <nav className={`navbar ${navActive ? "active" : ""} ${scrolled ? "scrolled" : ""}`}>
       <div className="navbar--logo">
-        <img src="./img/logo.svg" alt="Logoipsum" />
+        {/* Ensure you have a logo that works on dark background, or text logo */}
+        <h2 className="text-gradient" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>Yasiru.</h2>
       </div>
 
-      <div className="nav__hamburger" onClick={toggleNav}>
-        <span className="nav__hamburger__line"></span>
-        <span className="nav__hamburger__line"></span>
-        <span className="nav__hamburger__line"></span>
-      </div>
+      <a className={`nav__hamburger ${navActive ? "active" : ""}`} onClick={toggleNav} role="button" aria-expanded={navActive} aria-label="Toggle navigation">
+        <span className="line"></span>
+        <span className="line"></span>
+        <span className="line"></span>
+      </a>
 
       <div className={`navbar--items ${navActive ? "active" : ""}`}>
         <ul>
           <li>
-            <Link onClick={closeMenu} to="heroSection" spy={true} smooth={true} offset={-70} duration={500} className="navbar--content">
+            <Link onClick={closeMenu} activeClass="active" to="heroSection" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
               Home
             </Link>
           </li>
           <li>
-            <Link onClick={closeMenu} to="MyPortfolio" spy={true} smooth={true} offset={-70} duration={500} className="navbar--content">
+            <Link onClick={closeMenu} activeClass="active" to="MyPortfolio" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
               Portfolio
             </Link>
           </li>
           <li>
-            <Link onClick={closeMenu} to="AboutMe" spy={true} smooth={true} offset={-70} duration={500} className="navbar--content">
+            <Link onClick={closeMenu} activeClass="active" to="AboutMe" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
               About Me
             </Link>
           </li>
           <li>
-            <Link onClick={closeMenu} to="testimonial" spy={true} smooth={true} offset={-70} duration={500} className="navbar--content">
+            <Link onClick={closeMenu} activeClass="active" to="testimonial" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
               Testimonials
             </Link>
           </li>
         </ul>
       </div>
 
-      <Link onClick={closeMenu} to="Contact" spy={true} smooth={true} offset={-70} duration={500} className="btn btn-outline-primary">
+      <Link onClick={closeMenu} to="Contact" spy={true} smooth={true} offset={-70} duration={500} className="btn-primary">
         Contact Me
       </Link>
     </nav>
