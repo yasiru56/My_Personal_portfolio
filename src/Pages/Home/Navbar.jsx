@@ -58,7 +58,7 @@ function Navbar() {
       <div className={`navbar--items ${navActive ? "active" : ""}`}>
         <ul>
           <li>
-            <Link onClick={closeMenu} activeClass="active" to="heroSection" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
+            <Link onClick={closeMenu} activeClass="active" to="home" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
               Home
             </Link>
           </li>
@@ -70,11 +70,6 @@ function Navbar() {
           <li>
             <Link onClick={closeMenu} activeClass="active" to="AboutMe" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
               About Me
-            </Link>
-          </li>
-          <li>
-            <Link onClick={closeMenu} activeClass="active" to="testimonial" spy={true} smooth={true} offset={-70} duration={500} className="nav-link">
-              Testimonials
             </Link>
           </li>
         </ul>

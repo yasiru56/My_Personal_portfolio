@@ -1,0 +1,16 @@
+/* Sits inside .background-effects, above the static gradient and orbs */
+.wave-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.wave-background--ready {
+  opacity: 1;
+}
+
+.wave-background canvas {
+  display: block;
+}

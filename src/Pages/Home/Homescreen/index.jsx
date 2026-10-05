@@ -4,16 +4,16 @@ import Footer from "../Footer";
 import HeroSection from "../HeroSection";
 import MyPortfolio from "../MyPortfolio";
 import MySkills from "../MySkills";
-import Testimonials from "../Testimonials";
+import ParallaxGallery from "../../ParallaxGallery/ParallaxGallery";
 
 export default function Home() {
     return (
         <>
+            <ParallaxGallery />
             <HeroSection />
             <MySkills />
             <AboutMe />
             <MyPortfolio></MyPortfolio>
-            <Testimonials />
             <ContactMe />
             <Footer />
             

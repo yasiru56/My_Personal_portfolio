@@ -1,0 +1,52 @@
+.gallery {
+  position: relative;
+  background-color: var(--bg-dark);
+}
+
+.gallery__panel {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+/* Moves at half the scroll speed; the panel clips it, so no gaps show */
+.gallery__image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Blends the photos into the page and keeps the title readable */
+.gallery__panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(var(--bg-rgb), 0.55) 0%, transparent 22%),
+    linear-gradient(to top, rgba(var(--bg-rgb), 0.9) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.gallery__title {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 4vh;
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 16vw, 17rem);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--heading-color);
+  transform-origin: center bottom;
+  will-change: transform;
+}

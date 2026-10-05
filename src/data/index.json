@@ -27,6 +27,35 @@
   ],
   "portfolio": [
     {
+      "id": "deliverex-web",
+      "src": "./img/projects/deliverex-web.jpg",
+      "title": "DelivereX Web App",
+      "description": "Customer web app for DelivereX, a delivery platform for ordering food, groceries and more from local stores. Includes secure sign-in, multiple languages and light/dark mode.",
+      "techStack": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "NextAuth",
+        "Redux Toolkit"
+      ],
+      "liveLink": "https://deliverex.com.au"
+    },
+    {
+      "id": "deliverex-elk",
+      "src": "./img/projects/deliverex-elk.jpg",
+      "title": "DelivereX Logging & Monitoring",
+      "description": "Centralized logging and observability platform for the DelivereX microservices. Filebeat ships logs over TLS through Logstash into Elasticsearch, with OpenTelemetry traces in Kibana APM.",
+      "techStack": [
+        "Elasticsearch",
+        "Logstash",
+        "Kibana",
+        "OpenTelemetry",
+        "Docker"
+      ],
+      "githubLink": "https://github.com/yasiru56/elk-logging-system",
+      "liveLink": "https://kibana.livelocal.au"
+    },
+    {
       "id": "1",
       "src": "./img/placeholder-image3.png",
       "title": "E-Commerce Dashboard",
@@ -67,32 +96,6 @@
       ],
       "githubLink": "https://github.com/yasiru56",
       "liveLink": "https://github.com/yasiru56"
-    }
-  ],
-  "testimonial": [
-    {
-      "id": "1",
-      "count": "5",
-      "src": "./img/avatar-image.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique",
-      "author_name": "Dianne Russel",
-      "author_designation": "Starbucks"
-    },
-    {
-      "id": "2",
-      "count": "5",
-      "src": "./img/avatar-image-1.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique",
-      "author_name": "Kristin Watson",
-      "author_designation": "Louis Vuitton"
-    },
-    {
-      "id": "3",
-      "count": "5",
-      "src": "./img/avatar-image-2.png",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspenmdisse varius eim in eros elementum tristique",
-      "author_name": "Kathryn Murphy",
-      "author_designation": "McDonald's"
     }
   ]
 }

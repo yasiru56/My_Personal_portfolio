@@ -32,12 +32,17 @@ export default function MyPortfolio() {
 
       <div className="portfolio--section--container">
         {data?.portfolio?.map((item, index) => (
-          <div key={index} className="portfolio--section--card fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
+          <div key={item.id} className="portfolio--section--card fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
             <div className="portfolio--section--img-wrapper">
               <img src={item.src} alt={item.title} />
               <div className="portfolio--overlay">
-                <a href={item.liveLink} target="_blank" rel="noopener noreferrer" className="btn-overlay btn-overlay-primary">Live Demo</a>
-                <a href={item.githubLink} target="_blank" rel="noopener noreferrer" className="btn-overlay btn-overlay-secondary">GitHub</a>
+                {item.liveLink && (
+                  <a href={item.liveLink} target="_blank" rel="noopener noreferrer" className="btn-overlay btn-overlay-primary">Live Demo</a>
+                )}
+                {/* Only shown for public repositories */}
+                {item.githubLink && (
+                  <a href={item.githubLink} target="_blank" rel="noopener noreferrer" className="btn-overlay btn-overlay-secondary">GitHub</a>
+                )}
               </div>
             </div>
 
@@ -46,8 +51,8 @@ export default function MyPortfolio() {
               <p className="portfolio--description">{item.description}</p>
 
               <div className="portfolio--tech-stack">
-                {item.techStack?.map((tech, i) => (
-                  <span key={i} className="tech-tag">{tech}</span>
+                {item.techStack?.map((tech) => (
+                  <span key={tech} className="tech-tag">{tech}</span>
                 ))}
               </div>
             </div>
