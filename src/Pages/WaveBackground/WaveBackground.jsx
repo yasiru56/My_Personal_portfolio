@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import "./waveBackground.css";
 
-// The effect follows the mouse and is heavy on the GPU, so touch screens and
-// reduced-motion users keep the static CSS background behind it instead
-const canShowWaves = () =>
-  window.matchMedia("(pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Reduced-motion users keep the static CSS background behind it instead
+const canShowWaves = () => !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+// Touch screens get a lighter version: no shadows, lower resolution, ripples on tap
+const isTouchScreen = () => window.matchMedia("(pointer: coarse)").matches;
 
 export default function WaveBackground() {
   const containerRef = useRef(null);
@@ -21,7 +21,7 @@ export default function WaveBackground() {
         // Loaded on demand so three.js stays out of the main bundle
         const { default: WaveScene } = await import("./wave/WaveScene");
         if (isCancelled) return;
-        scene = new WaveScene(containerRef.current);
+        scene = new WaveScene(containerRef.current, { lite: isTouchScreen() });
         setIsReady(true);
       } catch (error) {
         if (!isCancelled) console.warn("Wave background unavailable, keeping the static background.", error);

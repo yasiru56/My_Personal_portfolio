@@ -6,6 +6,7 @@ const MAX_TRAIL = 128;
 const IDLE_DELAY = 3; // seconds
 const IDLE_INTERVAL = 1.5; // seconds
 const IDLE_STRENGTH = 0.8;
+const TAP_STRENGTH = 1.2;
 
 /**
  * Records the pointer path on the grid and uploads it every frame as a
@@ -57,24 +58,28 @@ export default class MouseTrail {
 
   // x and y in normalized device coordinates (-1 to 1)
   addPointerPoint(x, y) {
-    this.#pointer.set(x, y);
-    this.#raycaster.setFromCamera(this.#pointer, this.#camera);
-    const [hit] = this.#raycaster.intersectObject(this.#rayPlane);
+    const hit = this.#hitPoint(x, y);
     if (!hit) return;
 
-    const { x: worldX, z: worldZ } = hit.point;
+    // A ripple's strength is how far the pointer moved, so a still pointer adds nothing
     let distDelta = 0;
     if (this.#lastPoint) {
-      distDelta = Math.hypot(worldX - this.#lastPoint.x, worldZ - this.#lastPoint.z);
+      distDelta = Math.hypot(hit.x - this.#lastPoint.x, hit.z - this.#lastPoint.z);
       if (distDelta < this.params.trailSpacing) return;
     }
 
-    this.#addPoint({ x: worldX, z: worldZ, age: 0, distDelta });
-    this.#lastPoint = { x: worldX, z: worldZ };
+    this.#addPoint({ x: hit.x, z: hit.z, age: 0, distDelta });
+    this.#lastPoint = hit;
+    this.#resetIdle();
+  }
 
-    this.#idleTime = 0;
-    this.#idleTimer = 0;
-    this.#isIdle = false;
+  // A single ripple where the screen was tapped (touch screens)
+  addTapRipple(x, y) {
+    const hit = this.#hitPoint(x, y);
+    if (!hit) return;
+
+    this.#addPoint({ x: hit.x, z: hit.z, age: 0, distDelta: TAP_STRENGTH });
+    this.#resetIdle();
   }
 
   update(delta) {
@@ -113,6 +118,21 @@ export default class MouseTrail {
     this.#trailTexture.dispose();
     this.#rayPlane.geometry.dispose();
     this.#rayPlane.material.dispose();
+  }
+
+  // Where a screen position lands on the grid, as world { x, z }
+  #hitPoint(x, y) {
+    this.#pointer.set(x, y);
+    this.#raycaster.setFromCamera(this.#pointer, this.#camera);
+    const [hit] = this.#raycaster.intersectObject(this.#rayPlane);
+    return hit ? { x: hit.point.x, z: hit.point.z } : null;
+  }
+
+  // Pointer activity pauses the automatic ripples for IDLE_DELAY seconds
+  #resetIdle() {
+    this.#idleTime = 0;
+    this.#idleTimer = 0;
+    this.#isIdle = false;
   }
 
   #addRandomPoint() {

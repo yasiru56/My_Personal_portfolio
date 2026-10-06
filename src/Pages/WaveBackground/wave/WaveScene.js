@@ -17,7 +17,13 @@ const TILT_X = Math.PI * 0.03; // mouse Y
 const TILT_Z = Math.PI * 0.05; // mouse X
 const MOUSE_EASE = 0.04;
 const MAX_PIXEL_RATIO = 1.5; // it's a background, so trade a little sharpness for speed
+const LITE_PIXEL_RATIO = 1; // phones and tablets
 const MAX_DELTA = 0.1; // seconds; avoids a jump after the tab was hidden
+
+// Pointer position in normalized device coordinates (-1 to 1)
+function toDeviceCoords(event) {
+  return [(event.clientX / window.innerWidth) * 2 - 1, -(event.clientY / window.innerHeight) * 2 + 1];
+}
 
 export default class WaveScene {
   #container;
@@ -31,14 +37,19 @@ export default class WaveScene {
   #mouse = new THREE.Vector2();
   #easedMouse = new THREE.Vector2();
   #lastTime = null;
+  #lite;
+  #size = { width: 0, height: 0 };
 
-  constructor(container) {
+  // lite: lighter settings for touch devices (no shadows or antialiasing, lower resolution)
+  constructor(container, { lite = false } = {}) {
     this.#container = container;
+    this.#lite = lite;
 
-    this.#renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+    this.#renderer = new THREE.WebGLRenderer({ antialias: !lite, powerPreference: "high-performance" });
     this.#renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.#renderer.toneMappingExposure = 1.3;
-    this.#renderer.shadowMap.enabled = true;
+    // Shadows render the grid a second time every frame, too heavy for phones
+    this.#renderer.shadowMap.enabled = !lite;
     this.#renderer.shadowMap.type = THREE.PCFShadowMap;
 
     this.#camera.up.set(0, 0, -1);
@@ -57,6 +68,7 @@ export default class WaveScene {
     container.appendChild(this.#renderer.domElement);
     window.addEventListener("resize", this.#onResize);
     window.addEventListener("pointermove", this.#onPointerMove);
+    window.addEventListener("pointerdown", this.#onPointerDown);
     this.#renderer.setAnimationLoop(this.#render);
   }
 
@@ -64,6 +76,7 @@ export default class WaveScene {
     this.#renderer.setAnimationLoop(null);
     window.removeEventListener("resize", this.#onResize);
     window.removeEventListener("pointermove", this.#onPointerMove);
+    window.removeEventListener("pointerdown", this.#onPointerDown);
 
     this.#grid.dispose();
     this.#trail.dispose();
@@ -98,16 +111,28 @@ export default class WaveScene {
 
   // The canvas sits behind the page, so listen on the window instead of the canvas
   #onPointerMove = (event) => {
-    const x = (event.clientX / window.innerWidth) * 2 - 1;
-    const y = -(event.clientY / window.innerHeight) * 2 + 1;
+    const [x, y] = toDeviceCoords(event);
     this.#mouse.set(x, y);
     this.#trail.addPointerPoint(x, y);
+  };
+
+  // Touch screens have no hover, so a tap starts a ripple instead
+  #onPointerDown = (event) => {
+    if (event.pointerType === "mouse") return;
+    const [x, y] = toDeviceCoords(event);
+    this.#mouse.set(x, y);
+    this.#trail.addTapRipple(x, y);
   };
 
   #onResize = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const pixelRatio = Math.min(window.devicePixelRatio, MAX_PIXEL_RATIO);
+    // On phones the address bar shows and hides while scrolling, changing the height.
+    // Resizing WebGL then flickers, so only grow; a taller canvas is simply clipped.
+    if (this.#lite && width === this.#size.width && height <= this.#size.height) return;
+    this.#size = { width, height };
+
+    const pixelRatio = Math.min(window.devicePixelRatio, this.#lite ? LITE_PIXEL_RATIO : MAX_PIXEL_RATIO);
 
     this.#camera.aspect = width / height;
     this.#camera.updateProjectionMatrix();
