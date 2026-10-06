@@ -12,7 +12,7 @@ import GommageOrchestrator from "./gommageOrchestrator";
 // narrower on portrait screens so the name stays readable on phones
 const HORIZONTAL_FOV = THREE.MathUtils.degToRad(45);
 const PORTRAIT_HORIZONTAL_FOV = THREE.MathUtils.degToRad(36);
-const CLEAR_COLOR = 0x111111;
+const CLEAR_COLOR = 0x0b1430; // midnight navy
 
 export default class GommageScene {
   #container = null;

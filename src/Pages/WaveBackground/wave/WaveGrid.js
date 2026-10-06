@@ -17,10 +17,10 @@ const WAVE = {
   maxHeight: 0.4,
 };
 
-// Red theme: dark crimson cubes, brighter red on the wave crests.
+// Blue & black theme: midnight navy cubes, electric blue on the wave crests.
 // Kept fairly dark so text on top of the background stays readable.
-const COLOR_BASE = "#3a0308";
-const COLOR_HIGH = "#b3121c";
+const COLOR_BASE = "#071433";
+const COLOR_HIGH = "#1a44b8";
 
 // Moves the top of each cube along the ripples. Shared by the colour and the
 // shadow (depth) shaders so shadows follow the waves.

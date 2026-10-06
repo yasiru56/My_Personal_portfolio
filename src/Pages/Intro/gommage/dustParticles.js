@@ -68,7 +68,7 @@ export default class DustParticles {
     const aSeed = aBirthLifeSeedScale.z;
     const aScale = aBirthLifeSeedScale.w;
 
-    const uDustColor = uniform(new THREE.Color("#8A8A8A"));
+    const uDustColor = uniform(new THREE.Color("#7FA6E0"));
     const uWindDirection = uniform(new THREE.Vector3(-1, 0, 0).normalize());
     const uWindStrength = uniform(0.3);
     const uRiseSpeed = uniform(0.1); // constant lift

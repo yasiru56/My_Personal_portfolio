@@ -1,4 +1,8 @@
+import data from "../../data/index.json";
+
 export default function HeroSection() {
+  const cvUrl = data.cv?.downloadUrl;
+
   return (
     <section id="heroSection" className="hero--section">
       <div className="hero--section--content--box">
@@ -17,6 +21,28 @@ export default function HeroSection() {
           <div className="hero--btn-container fade-in-up delay-4">
             <button className="btn btn-primary">Start a Project</button>
             <button className="btn btn-github">View Work</button>
+            {/* Hidden until a CV link is set in data/index.json */}
+            {cvUrl && (
+              <a href={cvUrl} className="btn btn-github" target="_blank" rel="noopener noreferrer" download>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Download CV
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -108,8 +108,8 @@ export default class PetalParticles {
     const uBendSpeed = uniform(1.0);
     const uSpinSpeed = uniform(2.0);
     const uSpinAmp = uniform(0.45); // overall rotation amount
-    const uRedColor = uniform(new THREE.Color("#9B0000"));
-    const uWhiteColor = uniform(new THREE.Color("#EEEEEE"));
+    const uBlueColor = uniform(new THREE.Color("#1D4ED8"));
+    const uIceColor = uniform(new THREE.Color("#DCEBFF"));
     const uLightPosition = uniform(new THREE.Vector3(0, 0, 5));
 
     // Age of the petal in seconds
@@ -162,8 +162,8 @@ export default class PetalParticles {
     const normalUpdated = normalize(R.mul(B.mul(normalLocal)));
     const worldPosition = aSpawnPos.add(driftMovement).add(positionLocalUpdated.mul(aScale.mul(scaleFactor)));
 
-    // Every third petal is white, the rest are red
-    const petalColor = mix(uRedColor, uWhiteColor, instanceIndex.mod(3).equal(0));
+    // Every third petal is ice white, the rest are royal blue
+    const petalColor = mix(uBlueColor, uIceColor, instanceIndex.mod(3).equal(0));
 
     // Simple two-sided lighting so petals flicker as they tumble
     const lightDirection = normalize(uLightPosition.sub(worldPosition));

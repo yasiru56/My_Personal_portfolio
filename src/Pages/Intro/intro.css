@@ -7,10 +7,10 @@
 }
 
 .intro {
-  --intro-bg: #030303; /* the canvas clear color after tone mapping */
-  --intro-text: #d5cbb2;
-  --intro-gold: #eccfa3;
-  --intro-red: #a9161b;
+  --intro-bg: #00041c; /* the canvas clear color after tone mapping */
+  --intro-text: #cfe0ff;
+  --intro-name: #bfd7ff;
+  --intro-accent: #2563eb;
   --intro-notch: 15px;
 
   position: fixed;
@@ -50,7 +50,7 @@
   width: 100px;
   height: 1px;
   margin-left: -50px;
-  background: var(--intro-red);
+  background: var(--intro-accent);
   animation: intro-loader 1.5s ease-in-out infinite alternate;
   transition: opacity 0.4s ease;
 }
@@ -108,8 +108,8 @@
   line-height: 1;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--intro-gold);
-  text-shadow: 0 0 32px rgba(236, 207, 163, 0.35);
+  color: var(--intro-name);
+  text-shadow: 0 0 32px rgba(147, 197, 253, 0.4);
 }
 
 /* "Go to Portfolio" button, in the Expedition 33 style of the original demo */
@@ -170,7 +170,7 @@
 
 .intro__button:hover:not(:disabled) {
   color: #ffffff;
-  background-color: rgba(169, 22, 27, 0.25);
+  background-color: rgba(37, 99, 235, 0.3);
 }
 
 /* clip-path hides outlines, so focus is shown on the border instead */

@@ -1,32 +1,34 @@
 /* Global Variables & Reset */
 :root {
-  /* Red theme, matched to the studio portrait background (#4A0308) */
-  --primary: #e5383b;
-  /* Vivid red */
-  --primary-rgb: 229, 56, 59;
-  --primary-dark: #a4161a;
-  /* Deep crimson */
-  --primary-dark-rgb: 164, 22, 26;
-  --secondary: #ff8a8a;
-  /* Soft coral */
-  --secondary-rgb: 255, 138, 138;
-  --accent: #ff4d6d;
-  /* Rose red */
-  --bg-dark: #3b0207;
-  /* Crimson page background */
-  --bg-rgb: 59, 2, 7;
-  --shade-rgb: 18, 1, 3;
-  /* Near-black red, for shadows and dark glass */
-  --label-bg: #320308;
+  /* Blue & black theme */
+  --primary: #2563eb;
+  /* Royal blue */
+  --primary-rgb: 37, 99, 235;
+  --primary-dark: #1e3a8a;
+  /* Deep navy */
+  --primary-dark-rgb: 30, 58, 138;
+  --secondary: #60a5fa;
+  /* Sky blue */
+  --secondary-rgb: 96, 165, 250;
+  --accent: #38bdf8;
+  /* Electric blue */
+  --ice: #c7e0ff;
+  /* Ice blue, for bright highlights on dark backgrounds */
+  --bg-dark: #050a18;
+  /* Midnight page background */
+  --bg-rgb: 5, 10, 24;
+  --shade-rgb: 1, 3, 9;
+  /* Near-black blue, for shadows and dark glass */
+  --label-bg: #0b1428;
   /* Solid colour behind floating form labels */
-  --heading-color: #fff5f5;
-  --text-color: #f2d0d0;
-  --muted-color: #d9a5a5;
+  --heading-color: #f0f6ff;
+  --text-color: #c9d7ee;
+  --muted-color: #8fa5c9;
 
   /* Glass */
   --bg-card: rgba(255, 255, 255, 0.05);
   --bg-card-hover: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 170, 170, 0.16);
+  --glass-border: rgba(147, 197, 253, 0.16);
   --glass-highlight: rgba(255, 255, 255, 0.06);
   --glass-blur: blur(16px);
   --glass-shadow: 0 8px 32px rgba(var(--shade-rgb), 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
@@ -110,7 +112,7 @@ img {
 
 /* Utilities */
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--secondary), var(--ice));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -320,7 +322,7 @@ img {
 
 /* Ensure text-gradient uses standard background-clip */
 .text-gradient {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--ice) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -442,8 +444,8 @@ img {
 }
 
 .ai-dot {
-  background-color: #f43f5e;
-  box-shadow: 0 0 8px #f43f5e;
+  background-color: #818cf8;
+  box-shadow: 0 0 8px #818cf8;
 }
 
 /* Positioning Badges */
@@ -1139,7 +1141,7 @@ select.contact--input {
   color: var(--heading-color);
   appearance: none;
   /* custom arrow would be needed */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23e5383b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2360a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1em;
@@ -1464,9 +1466,9 @@ body::before {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  /* Studio light: brighter red in the middle, darker towards the edges */
+  /* Spotlight: deep blue glow in the middle, black towards the edges */
   background:
-    radial-gradient(ellipse 70% 60% at 50% 35%, #5e0711 0%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 50% 35%, #0f2a66 0%, transparent 70%),
     radial-gradient(ellipse 120% 80% at 50% 110%, rgba(var(--shade-rgb), 0.85) 0%, transparent 60%),
     var(--bg-dark);
 }

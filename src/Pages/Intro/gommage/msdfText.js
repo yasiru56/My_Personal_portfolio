@@ -63,9 +63,9 @@ export default class MSDFText {
     const uNoiseRemapMax = uniform(0.9);
     const uCenterScale = uniform(0.05);
     const uGlyphScale = uniform(0.75);
-    const uDissolvedColor = uniform(new THREE.Color("#5E5E5E"));
+    const uDissolvedColor = uniform(new THREE.Color("#2F4A7A"));
     const uDesatComplete = uniform(0.45);
-    const uBaseColor = uniform(new THREE.Color("#ECCFA3"));
+    const uBaseColor = uniform(new THREE.Color("#BFD7FF"));
 
     // Noise is sampled per glyph so each letter erodes differently
     const customUv = center.mul(uCenterScale).add(glyphUv.mul(uGlyphScale));
